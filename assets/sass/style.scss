@@ -23,6 +23,10 @@
         border-radius: 4px;
         transition: all 200ms ease-out;
 
+        @media(min-width: 768px) {
+            max-width: 600px;
+        }
+
         /* Header */
         .subero_modal_header {
             padding: 10px;

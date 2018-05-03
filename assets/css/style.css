@@ -22,6 +22,9 @@
   /* Header */
   /* Body */
   /* Footer */ }
+  @media (min-width: 768px) {
+    .subero_modal .subero_modal_content {
+      max-width: 600px; } }
   .subero_modal .subero_modal_content .subero_modal_header {
     padding: 10px; }
     .subero_modal .subero_modal_content .subero_modal_header .subero_modal_icon {

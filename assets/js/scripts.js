@@ -1,11 +1,11 @@
-function cancelBtn(callback) {
+function cancelBtn(args) {
     let cancelBtn = document.createElement('button');
     cancelBtn.classList.add('subero_modal_btn');
     cancelBtn.classList.add('subero_modal__btn__grey');
-    cancelBtn.innerHTML = 'Cancel';
+    cancelBtn.innerHTML = (args.hasOwnProperty('text')) ? args.text : 'Cancel';
 
-    if (callback) {
-        cancelBtn.addEventListener('click', callback);
+    if (args.hasOwnProperty('callback')) {
+        cancelBtn.addEventListener('click', args.callback);
     }
 
     cancelBtn.addEventListener('click', function() { hide_subero_modal() });
@@ -13,14 +13,15 @@ function cancelBtn(callback) {
     return cancelBtn;
 }
 
-function confirmBtn(callback) {
+function confirmBtn(args) {
+
     let confirmBtn = document.createElement('button');
     confirmBtn.classList.add('subero_modal_btn');
     confirmBtn.classList.add('subero_modal__btn__blue');
-    confirmBtn.innerHTML = 'Confirm';
+    confirmBtn.innerHTML = (args.hasOwnProperty('text')) ? args.text : 'Confirm';
 
-    if (callback) {
-        confirmBtn.addEventListener('click', callback);
+    if (args.hasOwnProperty('callback')) {
+        confirmBtn.addEventListener('click', args.callback);
     }
 
     confirmBtn.addEventListener('click', function() { hide_subero_modal() });
@@ -45,14 +46,13 @@ function launch_subero_modal(args) {
     modalMsg.innerHTML = args.msg;
 
     // Cancel button
-    if (args.showCancelButton == true) {
-        let cancelCallback = (args.cancelButtonCallback) ? args.cancelButtonCallback : null;
-        buttonsWrapper.appendChild(cancelBtn(cancelCallback));
+    if (args.hasOwnProperty('cancelButton')) {
+        buttonsWrapper.appendChild( cancelBtn(args.cancelButton) );
     }
 
     // Confirm button
-    let confirmCallback = (args.confirmButtonCallback) ? args.confirmButtonCallback : null;
-    buttonsWrapper.appendChild( confirmBtn(confirmCallback) );
+    let confirmButtonArgs = args.hasOwnProperty('confirmButton') ? args.confirmButton : {};
+    buttonsWrapper.appendChild( confirmBtn(confirmButtonArgs) );
     
     // Show modal
     modal.classList.remove('hidden');

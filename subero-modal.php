@@ -64,15 +64,10 @@ class SuberoModal {
                         <h4 id="subero_modal_title">Título del modal</h4>
                     </header>
                     <div class="subero_modal_body">
-                        <span id="subero_modal_msg" class="subero_modal_body_text">
-                            Lorem ipsum dolor sit amet. Este es un texto
-                            que será reemplazado más tarde.
-                        </span>
+                        <span id="subero_modal_msg" class="subero_modal_body_text"></span>
                     </div>
                     <footer class="subero_modal_footer">
-                        <div class="subero_modal_buttons_wrapper">
-                            <a class="subero_modal_btn" href="#" onclick="hide_subero_modal()">¡Bien!</a>
-                        </div>
+                        <div id="subero_modal_buttons_wrapper" class="subero_modal_buttons_wrapper"></div>
                     </footer>
                 </div>
             </div>

@@ -18,6 +18,7 @@
   border: 3rem;
   width: 80%;
   border-radius: 4px;
+  transition: all 200ms ease-out;
   /* Header */
   /* Body */
   /* Footer */ }
@@ -45,7 +46,23 @@
       display: inline-block;
       background: #22A7F0;
       color: #fff;
-      padding: 5px 15px;
-      border-radius: 20px; }
+      padding: 10px 15px;
+      margin: 0 5px;
+      border-radius: 20px;
+      line-height: normal;
+      height: auto;
+      border-color: transparent;
+      box-shadow: none;
+      border: none;
+      font-size: initial;
+      outline: none; }
+      .subero_modal .subero_modal_content .subero_modal_footer .subero_modal_buttons_wrapper .subero_modal_btn:active
+      .subero_modal .subero_modal_content .subero_modal_footer .subero_modal_buttons_wrapper .subero_modal_btn:focus {
+        outline: none;
+        border-color: transparent;
+        box-shadow: none; }
+    .subero_modal .subero_modal_content .subero_modal_footer .subero_modal_buttons_wrapper .subero_modal__btn__grey {
+      background: #ddd;
+      color: #777; }
 
 /*# sourceMappingURL=style.css.map */

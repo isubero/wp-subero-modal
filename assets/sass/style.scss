@@ -21,6 +21,7 @@
         border: 3rem;
         width: 80%;
         border-radius: 4px;
+        transition: all 200ms ease-out;
 
         /* Header */
         .subero_modal_header {
@@ -59,8 +60,28 @@
                     display: inline-block;  
                     background: #22A7F0;
                     color: #fff;
-                    padding: 5px 15px;
+                    padding: 10px 15px;
+                    margin: 0 5px;
                     border-radius: 20px;
+                    line-height: normal;
+                    height: auto;
+                    border-color: transparent;
+                    box-shadow: none;
+                    border: none;
+                    font-size: initial;
+                    outline: none;
+
+                    &:active
+                    &:focus {
+                        outline: none;
+                        border-color: transparent;
+                        box-shadow: none;
+                    }
+                }
+
+                .subero_modal__btn__grey {
+                    background: #ddd;
+                    color: #777;
                 }
             }
         }

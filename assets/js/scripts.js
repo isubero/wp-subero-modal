@@ -5,8 +5,8 @@ function launch_subero_modal(args) {
     let modalMsg = document.getElementById('subero_modal_msg');
 
     // Insert info
-    jQuery(modalHeader).html(args.title);
-    jQuery(modalMsg).html(args.msg);
+    modalHeader.innerHTML = args.title;
+    modalMsg = args.msg;
 
     console.log(args);
 
@@ -20,14 +20,3 @@ function hide_subero_modal() {
     modal.classList.add('hidden');
     modal.classList.remove('on');
 }
-
-/*
-jQuery(document).ready(function(){
-    let args = {
-        title: "Cupón detectado: Joha Clavel",
-        msg: 'Al completar tu compra recibirás su libro de recetas "Dulcemente Ligeros".'
-    }
-    
-    setTimeout( launch_subero_modal(args) , 2000);
-});
-*/

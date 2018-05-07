@@ -47,7 +47,7 @@ class SuberoModal {
 
     public function load_scripts() {
         wp_enqueue_style( 'subero-modal-styles', WP_PLUGIN_URL . '/subero-modal/assets/css/style.css' );
-        wp_enqueue_script( 'subero-modal-scripts', WP_PLUGIN_URL . '/subero-modal/assets/js/scripts.js', array('jquery'), '1.0', true );
+        wp_enqueue_script( 'subero-modal-scripts', WP_PLUGIN_URL . '/subero-modal/assets/js/scripts.js', null, '1.1', true );
         wp_localize_script( 'subero-modal-scripts',  'suberoModal_ajax_object', array(
             'ajax_url'      => admin_url( 'admin-ajax.php' ),
             'plugin_url'    => WP_PLUGIN_URL . '/subero-modal'

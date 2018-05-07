@@ -1,62 +1,128 @@
-function cancelBtn(args) {
-    let cancelBtn = document.createElement('button');
-    cancelBtn.classList.add('subero_modal_btn');
-    cancelBtn.classList.add('subero_modal__btn__grey');
-    cancelBtn.innerHTML = (args.hasOwnProperty('text')) ? args.text : 'Cancel';
+class SuberoModal {
+    constructor(args) {
+        args = args || {};
+        this.title = args.hasOwnProperty('title') ? args.title : 'Insert a title';
+        this.message = args.hasOwnProperty('message') ? args.message : 'Insert a message';
+        this.cancelButton = args.hasOwnProperty('cancelButton') ? args.cancelButton : null;
+        this.confirmButton = args.hasOwnProperty('confirmButton') ? args.confirmButton : {};
 
-    if (args.hasOwnProperty('callback')) {
-        cancelBtn.addEventListener('click', args.callback);
+        this.plugin_url = suberoModal_ajax_object.plugin_url;
+        this.ajax_url = suberoModal_ajax_object.ajax_url;
+
+        // Bind hide() method
+        this.hide = this.hide.bind(this);
+
+        // Create modal
+        this.createModal();
     }
 
-    cancelBtn.addEventListener('click', function() { hide_subero_modal() });
+    createModal() {
+        // Modal main div
+        let modalDiv = document.createElement('div');
+        modalDiv.classList.add('subero_modal');
+        modalDiv.classList.add('hidden');
 
-    return cancelBtn;
-}
+        // Modal content
+        let contentDiv = document.createElement('div');
+        contentDiv.classList.add('subero_modal_content');
+        modalDiv.appendChild(contentDiv);
 
-function confirmBtn(args) {
+        // Header
+        let modalHeader = document.createElement('header');
+        modalHeader.classList.add('subero_modal_header');
+        contentDiv.appendChild(modalHeader);
 
-    let confirmBtn = document.createElement('button');
-    confirmBtn.classList.add('subero_modal_btn');
-    confirmBtn.classList.add('subero_modal__btn__blue');
-    confirmBtn.innerHTML = (args.hasOwnProperty('text')) ? args.text : 'Confirm';
+        // Figure - image - icon
+        let figure = document.createElement('figure');
+        let image = document.createElement('img');
+        image.classList.add('subero_modal_icon');
+        image.setAttribute('src', this.plugin_url + '/assets/img/thumb-up-circle.png');
+        figure.appendChild(image);
+        modalHeader.appendChild(figure);
 
-    if (args.hasOwnProperty('callback')) {
-        confirmBtn.addEventListener('click', args.callback);
+        // Body
+        let body = document.createElement('div');
+        body.classList.add('subero_modal_body');
+
+        // Title
+        let title = document.createElement('h4');
+        title.classList.add('subero_modal_title');
+        title.innerHTML = this.title;
+        body.appendChild(title);
+
+        // Message span
+        let message = document.createElement('span');
+        message.classList.add('subero_modal_msg');
+        message.classList.add('subero_modal_body_text');
+        message.innerHTML = this.message;
+
+        body.appendChild(message);
+        contentDiv.appendChild(body);
+
+        // Footer
+        let footer = document.createElement('footer');
+        footer.classList.add('subero_modal_footer');
+        contentDiv.appendChild(footer);
+        
+        // Buttons
+        let buttonsWrapper = document.createElement('div');
+        buttonsWrapper.classList.add('subero_modal_buttons_wrapper');
+        footer.appendChild(buttonsWrapper);
+
+        // Cancel button
+        if (this.cancelButton) {
+            buttonsWrapper.appendChild( this.cancelBtn(this.cancelButton) );
+        }
+
+        // Confirm button
+        buttonsWrapper.appendChild( this.confirmBtn(this.confirmButton) );
+
+        // Save HTML Object
+        this.html = modalDiv;
+
+        // Append modal div to document Body
+        let documentBody = document.querySelector('body');
+        documentBody.appendChild(modalDiv);
+        
     }
 
-    confirmBtn.addEventListener('click', function() { hide_subero_modal() });
-
-    return confirmBtn;
-}
-
-function hide_subero_modal() {
-    let modal = document.getElementById('subero_modal');
-    modal.classList.add('hidden');
-    modal.classList.remove('on');
-}
-
-function launch_subero_modal(args) {
-    let modal = document.getElementById('subero_modal');
-    let modalHeader = document.getElementById('subero_modal_title');
-    let modalMsg = document.getElementById('subero_modal_msg');
-    let buttonsWrapper = document.getElementById('subero_modal_buttons_wrapper');
-
-    // Insert info
-    modalHeader.innerHTML = args.title;
-    modalMsg.innerHTML = args.msg;
-
-    // Cancel button
-    if (args.hasOwnProperty('cancelButton')) {
-        buttonsWrapper.appendChild( cancelBtn(args.cancelButton) );
-    }
-
-    // Confirm button
-    let confirmButtonArgs = args.hasOwnProperty('confirmButton') ? args.confirmButton : {};
-    buttonsWrapper.appendChild( confirmBtn(confirmButtonArgs) );
+    cancelBtn(args) {
+        let cancelBtn = document.createElement('button');
+        cancelBtn.classList.add('subero_modal_btn');
+        cancelBtn.classList.add('subero_modal__btn__grey');
+        cancelBtn.innerHTML = (args.hasOwnProperty('text')) ? args.text : 'Cancel';
     
-    // Show modal
-    modal.classList.remove('hidden');
-    modal.classList.add('on');
+        if (args.hasOwnProperty('callback')) {
+            cancelBtn.addEventListener('click', args.callback);
+        }
+    
+        cancelBtn.addEventListener('click', this.hide);
+    
+        return cancelBtn;
+    }
 
-    console.log(args);
+    confirmBtn(args) {
+        let confirmBtn = document.createElement('button');
+        confirmBtn.classList.add('subero_modal_btn');
+        confirmBtn.classList.add('subero_modal__btn__blue');
+        confirmBtn.innerHTML = (args.hasOwnProperty('text')) ? args.text : 'Confirm';
+    
+        if (args.hasOwnProperty('callback')) {
+            confirmBtn.addEventListener('click', args.callback);
+        }
+
+        confirmBtn.addEventListener('click', this.hide);
+    
+        return confirmBtn;
+    }
+
+    hide() {
+        this.html.classList.add('hidden');
+        this.html.classList.remove('on');
+    }
+
+    show() {
+        this.html.classList.remove('hidden');
+        this.html.classList.add('on');
+    }
 }

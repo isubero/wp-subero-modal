@@ -1,9 +1,12 @@
-#subero_modal {
+.subero_modal {
   display: flex;
   align-items: center;
   justify-content: center; }
 
-#subero_modal.on {
+.subero_modal.hidden {
+  display: none; }
+
+.subero_modal.on {
   z-index: 99999999;
   position: fixed;
   background: rgba(0, 0, 0, 0.8);
@@ -27,20 +30,22 @@
       max-width: 600px; } }
   .subero_modal .subero_modal_content .subero_modal_header {
     padding: 10px; }
-    .subero_modal .subero_modal_content .subero_modal_header .subero_modal_icon {
-      width: 80px;
-      display: block;
-      margin: auto; }
-    .subero_modal .subero_modal_content .subero_modal_header h4 {
-      color: #1d1d1d;
-      font-weight: bold;
-      margin: 0;
-      padding: 0;
-      text-align: center; }
+    .subero_modal .subero_modal_content .subero_modal_header figure {
+      margin: 0; }
+      .subero_modal .subero_modal_content .subero_modal_header figure .subero_modal_icon {
+        width: 80px;
+        display: block;
+        margin: 15px auto 0 auto; }
   .subero_modal .subero_modal_content .subero_modal_body {
     padding: 10px 10px 15px 10px;
     color: #808080;
     text-align: center; }
+    .subero_modal .subero_modal_content .subero_modal_body .subero_modal_title {
+      color: #1d1d1d;
+      font-weight: bold;
+      margin: 5px;
+      padding: 0;
+      text-align: center; }
   .subero_modal .subero_modal_content .subero_modal_footer .subero_modal_buttons_wrapper {
     display: block;
     text-align: center;

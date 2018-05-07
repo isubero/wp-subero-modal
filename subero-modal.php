@@ -25,9 +25,6 @@ class SuberoModal {
         // Enqueue scripts
         add_action( 'init', array($this, 'load_scripts') );
 
-        // Insert modal div at footer
-        add_action( 'wp_footer', array($this, 'insert_modal') );
-
     }
 
     /**
@@ -51,27 +48,10 @@ class SuberoModal {
     public function load_scripts() {
         wp_enqueue_style( 'subero-modal-styles', WP_PLUGIN_URL . '/subero-modal/assets/css/style.css' );
         wp_enqueue_script( 'subero-modal-scripts', WP_PLUGIN_URL . '/subero-modal/assets/js/scripts.js', array('jquery'), '1.0', true );
-    }
-
-    public function insert_modal() {
-        ?>
-            <div id="subero_modal" class="subero_modal hidden">
-                <div class="subero_modal_content">
-                    <header class="subero_modal_header">
-                        <figure>
-                            <img class="subero_modal_icon" src="<?= WP_PLUGIN_URL . '/subero-modal/assets/img/thumb-up-circle.png' ?>" alt="thumb-up icon">
-                        </figure>
-                        <h4 id="subero_modal_title">Título del modal</h4>
-                    </header>
-                    <div class="subero_modal_body">
-                        <span id="subero_modal_msg" class="subero_modal_body_text"></span>
-                    </div>
-                    <footer class="subero_modal_footer">
-                        <div id="subero_modal_buttons_wrapper" class="subero_modal_buttons_wrapper"></div>
-                    </footer>
-                </div>
-            </div>
-        <?php
+        wp_localize_script( 'subero-modal-scripts',  'suberoModal_ajax_object', array(
+            'ajax_url'      => admin_url( 'admin-ajax.php' ),
+            'plugin_url'    => WP_PLUGIN_URL . '/subero-modal'
+        ) );
     }
 }
 

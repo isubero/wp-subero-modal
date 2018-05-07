@@ -1,14 +1,14 @@
 <?php
 /*
-Plugin Name: Subero Modal
+Plugin Name: WP Subero Modal
 Plugin URI:  http://isaiassubero.com
-Description: Launch modals on a Js event.
+Description: Beautiful interactive modals powered by a Js class.
 Version:     1.0
 Author:      Isaías Subero
 Author URI:  http://isaiassubero.com
 License:     GPL2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: woocommerce-custom-emails
+Text Domain: wp-subero-modal
 Domain Path: /languages
 */
 

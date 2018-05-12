@@ -1,7 +1,31 @@
 # WP Subero Modal
 Beautiful interactive modals powered by a JavaScript class.
 
+## Prerequisites
+This is a WordPress plugin, so a WordPress installation is of course required.
+
+* Basic JavaScript knowledge.
+* Basic understanding of <a href="https://codex.wordpress.org/Plugin_API" target="_blank">WordPress Hooks</a> would help you to get the most out of this plugin.
+
+## Install
+Simply go to the releases tab and download the latest one, install as any other WordPress plugin.
+
+## Quick Example
+Display a modal anywhere on your site:
+
+<img src="demo/example-1.png" style="display: block; margin: auto" />
+
+``` javascript
+let myModal = new SuberoModal({
+    title: "This is the modal title",
+    message: "You can use <b>html tags</b> here.",
+});
+
+myModal.show();
+```
+
 ## Options
+All arguments are optional, however, you would want to declare at least a `title` and a `message` to display within the modal.
 
 * **title** String  
 * **message** String (Accepts HTML tags)
@@ -17,18 +41,20 @@ Beautiful interactive modals powered by a JavaScript class.
   * height (Integer)
   * classes (Array with aditional classes for the image)
 
-
 ## Methods
 There are just two simple methods: `show()` and `hide()`. You probably already guessed what they do.
 
-## Example
+## Example with image
+
+<img src="demo/example-2.png" style="display: block; margin: auto" />
+
 ``` javascript
 let exampleModal = new SuberoModal({
     image: {
       src: "your-image-url-here.jpg"
     },
-    title: "This is the modal title",
-    message: "You can use <b>html tags</b> here.",
+    title: "A modal with an image",
+    message: "This is looking good.",
     confirmButton: {
       text: "Ok, I accept",
       callback: function() {
@@ -43,6 +69,7 @@ let exampleModal = new SuberoModal({
 // Fire it up!
 exampleModal.show();
 ```
+
 The `hide()` method is called automatically after the confirm or cancel button is clicked, however you may call `show()` and `hide()` methods at will.
 
 ## WordPress example
@@ -56,7 +83,7 @@ function my_modal() {
   if ( !is_user_logged_in() ) : ?>
     <script>
       // Make sure DOM is ready (SuberoModal class has loaded)
-      document.addEventListener("DOMContentLoaded", function(event) { 
+      document.addEventListener("DOMContentLoaded", function(event) {
         
         let myModal = new SuberoModal({
             title: "Login",
@@ -77,3 +104,13 @@ function my_modal() {
   <?php endif;
 }
 ```
+Now open an incognito window or logout from your session to view the modal.
+
+<img src="demo/example-3.png" style="display: block; margin: auto" />
+
+## A word on callbacks
+Buttons callbacks are a very helpful feature of this modal, you can define any JavaScript function to be executed when the user clicks on the confirm/cancel buttons. I've used it for applying a WooCommerce coupon via Ajax, recolecting votes on simple pulls, redirecting users to promo landing pages, basically anything you can think of.
+
+
+## Thanks for your feedback
+That's pretty much it for now. Hope you enjoy it! You can reach me out on Twitter <a href="https://twitter.com/suberovski" target="_blank">@suberovski</a>.

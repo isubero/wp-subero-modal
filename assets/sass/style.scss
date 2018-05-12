@@ -54,30 +54,39 @@
 
         /* Body */
         .subero_modal_body {
+            
+            font-size: 16px;
+            text-align: center;
+            padding: 10px 10px 15px 10px;
 
             .subero_modal_title {
                 color: #1d1d1d;
+                font-size: 1.5em;
                 font-weight: bold;
                 margin: 5px;
                 padding: 0;
                 text-align: center;
             }
 
-            padding: 10px 10px 15px 10px;
-            color: #808080;
-            text-align: center;
+            .subero_modal_body_text {
+                font-size: 1em;
+                color: #808080;
+            }
+
         }
 
         /* Footer */
         .subero_modal_footer {
             .subero_modal_buttons_wrapper {
                 display: block;
+                font-size: 16px;
                 text-align: center;
                 margin-bottom: 20px;
 
                 .subero_modal_btn {
                     display: inline-block;  
                     background: #22A7F0;
+                    font-size: 1em;
                     color: #fff;
                     padding: 10px 15px;
                     margin: 0 5px;
@@ -87,7 +96,6 @@
                     border-color: transparent;
                     box-shadow: none;
                     border: none;
-                    font-size: initial;
                     outline: none;
 
                     &:active

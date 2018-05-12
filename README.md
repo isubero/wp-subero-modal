@@ -1,11 +1,11 @@
-# wp-subero-modal
+# WP Subero Modal
 Beautiful interactive modals powered by a JavaScript class.
 
 ## Options
 
-* **Title** String  
-* **Message** String (Accepts HTML tags)
-* **ConfirmButton** Object
+* **title** String  
+* **message** String (Accepts HTML tags)
+* **confirmButton** Object
   * Text (String)
   * Callback (Function)
 * **cancelButton** Object
@@ -13,10 +13,10 @@ Beautiful interactive modals powered by a JavaScript class.
   * Callback (Function)
 
 ## Methods
-There are just two simple methods: `show()` and `hide()`. You probably guessed what they do.
+There are just two simple methods: `show()` and `hide()`. You probably already guessed what they do.
 
 ## Example
-```
+``` javascript
 let exampleModal = new SuberoModal({
     image: {
       src: "your-image-url-here.jpg"
@@ -32,8 +32,9 @@ let exampleModal = new SuberoModal({
     cancelButton: {
         text: "No, thanks"
     }
-})
+});
 
+// Fire it up!
 exampleModal.show();
 ```
-`hide()` method is called automatically after the confirm or cancel button is clicked.
+The `hide()` method is called automatically after the confirm or cancel button is clicked, however you may call `show()` and `hide()` methods at will.

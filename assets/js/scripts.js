@@ -154,22 +154,3 @@ class SuberoModal {
         this.html.classList.add('on');
     }
 }
-
-let exampleModal = new SuberoModal({
-    image: {
-       src: "https://www.collegeatlas.org/wp-content/uploads/2014/06/Top-Party-Schools-main-image.jpg"
-    },
-    title: "This is the modal title",
-    message: "You can use <b>html tags</b> here.",
-    confirmButton: {
-      text: "Ok, I accept",
-      callback: function() {
-        alert("This is a custom callback!");
-      }
-    },
-    cancelButton: {
-        text: "No, thanks"
-    }
-  })
-
-exampleModal.show();

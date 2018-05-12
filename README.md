@@ -109,7 +109,7 @@ Now open an incognito window or logout from your session to view the modal.
 <img src="demo/example-3.png" style="display: block; margin: auto" />
 
 ## A word on callbacks
-Buttons callbacks are a very helpful feature of this modal, you can define any JavaScript function to be executed when the user clicks on the confirm/cancel buttons. I've used it for applying a WooCommerce coupon via Ajax, recolecting votes on simple pulls, redirecting users to promo landing pages, basically anything you can think of.
+Buttons callbacks are a very helpful feature of this modal, you can define any JavaScript function to be executed when the user clicks on the confirm/cancel buttons. I've used it for applying a WooCommerce coupon via Ajax, recolecting votes on simple polls, redirecting users to promo landing pages, basically anything you can think of.
 
 
 ## Thanks for your feedback

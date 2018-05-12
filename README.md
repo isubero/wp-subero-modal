@@ -8,7 +8,7 @@ This is a WordPress plugin, so a WordPress installation is of course required.
 * Basic understanding of <a href="https://codex.wordpress.org/Plugin_API" target="_blank">WordPress Hooks</a> would help you to get the most out of this plugin.
 
 ## Install
-Simply go to the releases tab and download the latest one, install as any other WordPress plugin.
+Simply go to the <a href="https://github.com/isubero/wp-subero-modal/releases" target="_blank">releases</a> tab and **download the zip file** of the latest one. Install as any other WordPress plugin.
 
 ## Quick Example
 Display a modal anywhere on your site:

@@ -11,6 +11,12 @@ Beautiful interactive modals powered by a JavaScript class.
 * **cancelButton** Object
   * Text (String)
   * Callback (Function)
+* **image** Array
+  * src (String - The url of the image)
+  * width (Integer)
+  * height (Integer)
+  * classes (Array with aditional classes for the image)
+
 
 ## Methods
 There are just two simple methods: `show()` and `hide()`. You probably already guessed what they do.

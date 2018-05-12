@@ -132,7 +132,7 @@ class SuberoModal {
     confirmBtn(args) {
         let confirmBtn = document.createElement('button');
         confirmBtn.classList.add('subero_modal_btn');
-        confirmBtn.classList.add('subero_modal__btn__blue');
+        confirmBtn.classList.add('subero_modal__btn__primary');
         confirmBtn.innerHTML = (args.hasOwnProperty('text')) ? args.text : 'Confirm';
     
         if (args.hasOwnProperty('callback')) {

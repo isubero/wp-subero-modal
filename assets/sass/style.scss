@@ -85,9 +85,7 @@
 
                 .subero_modal_btn {
                     display: inline-block;  
-                    background: #22A7F0;
                     font-size: 1em;
-                    color: #fff;
                     padding: 10px 15px;
                     margin: 0 5px;
                     border-radius: 20px;
@@ -97,6 +95,7 @@
                     box-shadow: none;
                     border: none;
                     outline: none;
+                    cursor: pointer;
 
                     &:active
                     &:focus {
@@ -104,6 +103,11 @@
                         border-color: transparent;
                         box-shadow: none;
                     }
+                }
+
+                .subero_modal__btn__primary {
+                    background: #22A7F0;
+                    color: #fff;
                 }
 
                 .subero_modal__btn__grey {

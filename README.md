@@ -44,3 +44,36 @@ let exampleModal = new SuberoModal({
 exampleModal.show();
 ```
 The `hide()` method is called automatically after the confirm or cancel button is clicked, however you may call `show()` and `hide()` methods at will.
+
+## WordPress example
+Once you installed the plugin, simply use the appropriate WordPress Hook for your modal. For the sake of simplicity, let's use the `wp_footer` hook and display a modal if the user is not authenticated.
+
+``` php
+add_action('wp_footer', 'my_modal');
+
+function my_modal() {
+  
+  if ( !is_user_logged_in() ) : ?>
+    <script>
+      // Make sure DOM is ready (SuberoModal class has loaded)
+      document.addEventListener("DOMContentLoaded", function(event) { 
+        
+        let myModal = new SuberoModal({
+            title: "Login",
+            message: "Looks like you are not authenticated.",
+            confirmButton: { 
+              text: "Login",
+              callback: function() { 
+                window.location = "www.yoursite.com/wp-login.php";
+              }
+            },
+            cancelButton: { text: "Close" }
+        });
+
+        // Display the modal
+        myModal.show();
+      });
+    </script>
+  <?php endif;
+}
+```

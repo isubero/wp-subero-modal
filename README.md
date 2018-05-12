@@ -11,17 +11,29 @@ Beautiful interactive modals powered by a JavaScript class.
 * **cancelButton** Object
   * Text (String)
   * Callback (Function)
-  
- ## Example
+
+## Methods
+There are just two simple methods: `show()` and `hide()`. You probably guessed what they do.
+
+## Example
 ```
-let exampleModal = New SuberoModal({
-  title: "This is the modal title"
-  message: "You can use <b>html tags</b> here.",
-  confirmButton: {
-    text: "Yes, I accept"
-    callback: function() {
-      alert("This is a custom callback!");
+let exampleModal = new SuberoModal({
+    image: {
+      src: "your-image-url-here.jpg"
+    },
+    title: "This is the modal title",
+    message: "You can use <b>html tags</b> here.",
+    confirmButton: {
+      text: "Ok, I accept",
+      callback: function() {
+        alert("This is a custom callback!");
+      }
+    },
+    cancelButton: {
+        text: "No, thanks"
     }
-  }
 })
+
+exampleModal.show();
 ```
+`hide()` method is called automatically after the confirm or cancel button is clicked.

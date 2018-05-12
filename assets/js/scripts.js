@@ -1,13 +1,14 @@
 class SuberoModal {
     constructor(args) {
+        this.plugin_url = suberoModal_ajax_object.plugin_url;
+        this.ajax_url = suberoModal_ajax_object.ajax_url;
+
         args = args || {};
+        this.image = args.hasOwnProperty('image') ? this.setImage(args.image, this.plugin_url) : null;
         this.title = args.hasOwnProperty('title') ? args.title : 'Insert a title';
         this.message = args.hasOwnProperty('message') ? args.message : 'Insert a message';
         this.cancelButton = args.hasOwnProperty('cancelButton') ? args.cancelButton : null;
         this.confirmButton = args.hasOwnProperty('confirmButton') ? args.confirmButton : {};
-
-        this.plugin_url = suberoModal_ajax_object.plugin_url;
-        this.ajax_url = suberoModal_ajax_object.ajax_url;
 
         // Bind hide() method
         this.hide = this.hide.bind(this);
@@ -33,12 +34,30 @@ class SuberoModal {
         contentDiv.appendChild(modalHeader);
 
         // Figure - image - icon
-        let figure = document.createElement('figure');
-        let image = document.createElement('img');
-        image.classList.add('subero_modal_icon');
-        image.setAttribute('src', this.plugin_url + '/assets/img/thumb-up-circle.png');
-        figure.appendChild(image);
-        modalHeader.appendChild(figure);
+        if (this.image) {
+            let figure = document.createElement('figure');
+            let image = document.createElement('img');
+            
+            image.classList.add('subero_modal_img');
+            
+            // Aditional classes added by the user
+            if (this.image.classes) {
+                image.classList.add(...this.image.classes);
+            }
+
+            // Custom Width/Height
+            console.log(this.image.width);
+            if ( this.image.width ) {
+                image.setAttribute('width', this.image.width);
+            }
+            if ( this.image.height ) {
+                image.setAttribute('height', this.image.height);
+            }
+
+            image.setAttribute('src', this.image.src);
+            figure.appendChild(image);
+            modalHeader.appendChild(figure);
+        }
 
         // Body
         let body = document.createElement('div');
@@ -86,6 +105,15 @@ class SuberoModal {
         
     }
 
+    setImage(args, pluginUrl) {
+        let image = {};
+        image.src = args.hasOwnProperty('src') ? args.src : pluginUrl + '/assets/img/thumb-up-circle.png';
+        image.classes = args.hasOwnProperty('classes') ? args.classes : null;
+        image.width = args.hasOwnProperty('width') ? args.width : null;
+        image.height = args.hasOwnProperty('height') ? args.height : null;
+        return image;
+    }
+
     cancelBtn(args) {
         let cancelBtn = document.createElement('button');
         cancelBtn.classList.add('subero_modal_btn');
@@ -126,3 +154,22 @@ class SuberoModal {
         this.html.classList.add('on');
     }
 }
+
+let exampleModal = new SuberoModal({
+    image: {
+       src: "https://www.collegeatlas.org/wp-content/uploads/2014/06/Top-Party-Schools-main-image.jpg"
+    },
+    title: "This is the modal title",
+    message: "You can use <b>html tags</b> here.",
+    confirmButton: {
+      text: "Ok, I accept",
+      callback: function() {
+        alert("This is a custom callback!");
+      }
+    },
+    cancelButton: {
+        text: "No, thanks"
+    }
+  })
+
+exampleModal.show();

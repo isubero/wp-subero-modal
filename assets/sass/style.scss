@@ -33,15 +33,21 @@
 
         /* Header */
         .subero_modal_header {
-            padding: 10px;
 
             figure {
                 margin: 0;
 
-                .subero_modal_icon {
-                    width: 80px;
+                .subero_modal_img {
                     display: block;
-                    margin: 15px auto 0 auto;;
+                    max-width: 100%;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+
+                .subero_modal_icon {
+                    margin-top: 20px;
+                    width: 90px;
+                    height: 90px;
                 }
             }
         }

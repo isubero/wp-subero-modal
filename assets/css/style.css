@@ -28,14 +28,17 @@
   @media (min-width: 768px) {
     .subero_modal .subero_modal_content {
       max-width: 600px; } }
-  .subero_modal .subero_modal_content .subero_modal_header {
-    padding: 10px; }
-    .subero_modal .subero_modal_content .subero_modal_header figure {
-      margin: 0; }
-      .subero_modal .subero_modal_content .subero_modal_header figure .subero_modal_icon {
-        width: 80px;
-        display: block;
-        margin: 15px auto 0 auto; }
+  .subero_modal .subero_modal_content .subero_modal_header figure {
+    margin: 0; }
+    .subero_modal .subero_modal_content .subero_modal_header figure .subero_modal_img {
+      display: block;
+      max-width: 100%;
+      margin-left: auto;
+      margin-right: auto; }
+    .subero_modal .subero_modal_content .subero_modal_header figure .subero_modal_icon {
+      margin-top: 20px;
+      width: 90px;
+      height: 90px; }
   .subero_modal .subero_modal_content .subero_modal_body {
     padding: 10px 10px 15px 10px;
     color: #808080;

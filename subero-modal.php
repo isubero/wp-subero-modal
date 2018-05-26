@@ -23,8 +23,10 @@ class SuberoModal {
         $this->define_constants();
         
         // Enqueue scripts
-        add_action( 'init', array($this, 'load_scripts') );
+		add_action( 'init', array($this, 'load_scripts') );
 
+		// Auto update
+		add_filter( 'init', array($this, 'update') );
     }
 
     /**
@@ -38,6 +40,7 @@ class SuberoModal {
 			define( $name, $value );
 		}
 	}
+
 	/**
 	* Define plugin constants
 	*/
@@ -52,7 +55,24 @@ class SuberoModal {
             'ajax_url'      => admin_url( 'admin-ajax.php' ),
             'plugin_url'    => WP_PLUGIN_URL . '/wp-subero-modal'
         ) );
-    }
+	}
+
+	/**
+	 * Update class
+	 */
+	public function update() {
+		require_once 'class-wp-subero-update.php';
+		
+		// set auto-update params
+		$product_name			= 'wp-subero-modal';
+		$plugin_current_version = '1.0';
+		$plugin_remote_path     = 'http://updates.isaiassubero.com';
+		$plugin_slug            = plugin_basename(__FILE__);
+		$license_user           = 'contactosubero@gmail.com';
+		$license_key            = '123456789';
+
+		new WP_Subero_Autoupdate( $product_name, $plugin_current_version, $plugin_remote_path, $plugin_slug );
+	}
 }
 
 $GLOBALS['subero_modal'] = new SuberoModal();

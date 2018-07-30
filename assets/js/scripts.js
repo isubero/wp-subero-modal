@@ -4,6 +4,7 @@ class SuberoModal {
         this.ajax_url = suberoModal_ajax_object.ajax_url;
 
         args = args || {};
+        this.id = args.hasOwnProperty('id') ? args.id : null;
         this.image = args.hasOwnProperty('image') ? this.setImage(args.image, this.plugin_url) : null;
         this.title = args.hasOwnProperty('title') ? args.title : 'Insert a title';
         this.message = args.hasOwnProperty('message') ? args.message : 'Insert a message';
@@ -22,6 +23,10 @@ class SuberoModal {
         let modalDiv = document.createElement('div');
         modalDiv.classList.add('subero_modal');
         modalDiv.classList.add('hidden');
+
+        if ( this.id ) {
+            modalDiv.setAttribute('id', this.id);
+        }
 
         // Modal content
         let contentDiv = document.createElement('div');

@@ -128,8 +128,12 @@ class SuberoModal {
         if (args.hasOwnProperty('callback')) {
             cancelBtn.addEventListener('click', args.callback);
         }
+
+        let hideOnClick = args.hasOwnProperty('hideOnClick') ? args.hideOnClick : true;
     
-        cancelBtn.addEventListener('click', this.hide);
+        if ( hideOnClick ) {
+            cancelBtn.addEventListener('click', this.hide);
+        }
     
         return cancelBtn;
     }
@@ -143,8 +147,12 @@ class SuberoModal {
         if (args.hasOwnProperty('callback')) {
             confirmBtn.addEventListener('click', args.callback);
         }
-
-        confirmBtn.addEventListener('click', this.hide);
+        
+        let hideOnClick = args.hasOwnProperty('hideOnClick') ? args.hideOnClick : true;
+    
+        if ( hideOnClick ) {
+            confirmBtn.addEventListener('click', this.hide);
+        }
     
         return confirmBtn;
     }

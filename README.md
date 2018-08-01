@@ -27,14 +27,17 @@ myModal.show();
 ## Options
 All arguments are optional, however, you would want to declare at least a `title` and a `message` to display within the modal.
 
+* **id** String sets the id attribute for the main modal Div.
 * **title** String  
 * **message** String (Accepts HTML tags)
 * **confirmButton** Object
   * Text (String)
   * Callback (Function)
+  * hideOnClick (Bool) wheather to close the modal or not when this button is clicked. Default: true.
 * **cancelButton** Object
   * Text (String)
   * Callback (Function)
+  * hideOnClick (Bool) wheather to close the modal or not when this button is clicked. Default: true.
 * **image** Array
   * src (String - The url of the image)
   * width (Integer)

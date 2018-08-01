@@ -20,6 +20,8 @@
   background: #fff;
   border: 3rem;
   width: 80%;
+  max-height: 80%;
+  overflow: auto;
   border-radius: 4px;
   transition: all 200ms ease-out;
   /* Header */

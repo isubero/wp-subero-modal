@@ -10,6 +10,7 @@ class SuberoModal {
         this.message = args.hasOwnProperty('message') ? args.message : 'Insert a message';
         this.cancelButton = args.hasOwnProperty('cancelButton') ? args.cancelButton : null;
         this.confirmButton = args.hasOwnProperty('confirmButton') ? args.confirmButton : {};
+        this.closeIcon = args.hasOwnProperty('closeIcon') ? args.closeIcon : false;
 
         // Bind hide() method
         this.hide = this.hide.bind(this);
@@ -32,6 +33,15 @@ class SuberoModal {
         let contentDiv = document.createElement('div');
         contentDiv.classList.add('subero_modal_content');
         modalDiv.appendChild(contentDiv);
+
+        // Close icon
+        if ( this.closeIcon ) {
+            let closeIcon = document.createElement('div');
+            closeIcon.classList.add('subero_modal_closeIcon');
+            closeIcon.innerHTML = "X";
+            closeIcon.addEventListener('click', this.hide);
+            contentDiv.appendChild(closeIcon);
+        }
 
         // Header
         let modalHeader = document.createElement('header');

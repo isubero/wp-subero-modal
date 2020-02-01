@@ -31,14 +31,14 @@ All arguments are optional, however, you would want to declare at least a `title
 * **title** String  
 * **message** String (Accepts HTML tags)
 * **confirmButton** Object
-  * Text (String)
-  * Callback (Function)
+  * text (String)
+  * callback (Function)
   * hideOnClick (Bool) wheather to close the modal or not when this button is clicked. Default: true.
 * **cancelButton** Object
-  * Text (String)
-  * Callback (Function)
+  * text (String)
+  * callback (Function)
   * hideOnClick (Bool) wheather to close the modal or not when this button is clicked. Default: true.
-* **image** Array
+* **image** Object
   * src (String - The url of the image)
   * width (Integer)
   * height (Integer)

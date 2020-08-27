@@ -8,7 +8,7 @@ class SuberoModal {
         this.id = args.hasOwnProperty('id') ? args.id : null;
         this.banner = args.hasOwnProperty('banner') ? this.setBanner(args.banner, this.plugin_url) : null;
         this.image = args.hasOwnProperty('image') ? this.setImage(args.image, this.plugin_url) : null;
-        this.title = args.hasOwnProperty('title') ? args.title : 'Insert a title';
+        this.title = args.hasOwnProperty('title') ? args.title : null;
         this.message = args.hasOwnProperty('message') ? args.message : 'Insert a message';
         this.cancelButton = args.hasOwnProperty('cancelButton') ? args.cancelButton : null;
         this.confirmButton = args.hasOwnProperty('confirmButton') ? args.confirmButton : {};
@@ -119,10 +119,12 @@ class SuberoModal {
         body.classList.add('subero_modal_body');
 
         // Title
-        let title = document.createElement('h4');
-        title.classList.add('subero_modal_title');
-        title.innerHTML = this.title;
-        body.appendChild(title);
+        if (this.title) {
+            let title = document.createElement('h4');
+            title.classList.add('subero_modal_title');
+            title.innerHTML = this.title;
+            body.appendChild(title);
+        }
 
         // Message span
         let message = document.createElement('span');

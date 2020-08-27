@@ -11,7 +11,7 @@ class SuberoModal {
         this.title = args.hasOwnProperty('title') ? args.title : null;
         this.message = args.hasOwnProperty('message') ? args.message : 'Insert a message';
         this.cancelButton = args.hasOwnProperty('cancelButton') ? args.cancelButton : null;
-        this.confirmButton = args.hasOwnProperty('confirmButton') ? args.confirmButton : {};
+        this.confirmButton = args.hasOwnProperty('confirmButton') ? args.confirmButton : null;
         this.closeIcon = args.hasOwnProperty('closeIcon') ? args.closeIcon : false;
 
         // Bind hide() method
@@ -151,7 +151,9 @@ class SuberoModal {
         }
 
         // Confirm button
-        buttonsWrapper.appendChild( this.confirmBtn(this.confirmButton) );
+        if (this.confirmButton) {
+            buttonsWrapper.appendChild( this.confirmBtn(this.confirmButton) );
+        }
 
         // Save HTML Object
         this.html = modalDiv;

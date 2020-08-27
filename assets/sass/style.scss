@@ -30,7 +30,8 @@
         }
 
         .subero_modal_left_col {
-            flex-shrink: 1;
+            flex-grow: 1;
+            width: 50%;
             
             img {
                 width: 100%;
@@ -38,9 +39,9 @@
         }
 
         .subero_modal_right_col {
-            flex-grow: 2;
+            flex-grow: 1;
+            width: 50%;
             max-width: 500px;
-            align-self: center;
         }
     }
 

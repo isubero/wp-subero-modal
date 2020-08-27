@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: WP Subero Modal
-Plugin URI:  http://isaiassubero.com
+Plugin URI:  https://isaias.io
 Description: Beautiful interactive modals powered by a Js class.
 Version:     1.2
 Author:      Isaías Subero
-Author URI:  http://isaiassubero.com
+Author URI:  http://isaias.io
 License:     GPL2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: wp-subero-modal

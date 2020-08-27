@@ -4,7 +4,9 @@ class SuberoModal {
         this.ajax_url = suberoModal_ajax_object.ajax_url;
 
         args = args || {};
+        this.layout = args.hasOwnProperty('layout') ? args.layout : 'vertical';
         this.id = args.hasOwnProperty('id') ? args.id : null;
+        this.banner = args.hasOwnProperty('banner') ? this.setBanner(args.banner, this.plugin_url) : null;
         this.image = args.hasOwnProperty('image') ? this.setImage(args.image, this.plugin_url) : null;
         this.title = args.hasOwnProperty('title') ? args.title : 'Insert a title';
         this.message = args.hasOwnProperty('message') ? args.message : 'Insert a message';
@@ -32,6 +34,13 @@ class SuberoModal {
         // Modal content
         let contentDiv = document.createElement('div');
         contentDiv.classList.add('subero_modal_content');
+
+        if ( this.layout == 'horizontal' ) {
+            contentDiv.classList.add('subero_modal_content_horizontal');
+        } else {
+            contentDiv.classList.add('subero_modal_content_vertical');
+        }
+
         modalDiv.appendChild(contentDiv);
 
         // Close icon
@@ -43,10 +52,42 @@ class SuberoModal {
             contentDiv.appendChild(closeIcon);
         }
 
+        // Create left column
+        let leftColDiv = document.createElement('div');
+        leftColDiv.classList.add('subero_modal_left_col');
+        contentDiv.appendChild(leftColDiv);
+
+        // left column banner
+        if (this.banner) {
+            let banner = document.createElement('img');
+            banner.classList.add('subero_modal_banner');
+
+            // Aditional banner classes added by the user
+            if (this.banner.classes) {
+                banner.classList.add(...this.banner.classes);
+            }
+
+            // Custom Width/Height
+            if ( this.banner.width ) {
+                banner.setAttribute('width', this.banner.width);
+            }
+            if ( this.banner.height ) {
+                banner.setAttribute('height', this.banner.height);
+            }
+
+            banner.setAttribute('src', this.banner.src);
+            leftColDiv.appendChild(banner);
+        }
+
+        // Create right column
+        let rightColDiv = document.createElement('div');
+        rightColDiv.classList.add('subero_modal_right_col');
+        contentDiv.appendChild(rightColDiv);
+
         // Header
         let modalHeader = document.createElement('header');
         modalHeader.classList.add('subero_modal_header');
-        contentDiv.appendChild(modalHeader);
+        rightColDiv.appendChild(modalHeader);
 
         // Figure - image - icon
         if (this.image) {
@@ -60,8 +101,7 @@ class SuberoModal {
                 image.classList.add(...this.image.classes);
             }
 
-            // Custom Width/Height
-            console.log(this.image.width);
+            // Custom image Width/Height
             if ( this.image.width ) {
                 image.setAttribute('width', this.image.width);
             }
@@ -91,12 +131,12 @@ class SuberoModal {
         message.innerHTML = this.message;
 
         body.appendChild(message);
-        contentDiv.appendChild(body);
+        rightColDiv.appendChild(body);
 
         // Footer
         let footer = document.createElement('footer');
         footer.classList.add('subero_modal_footer');
-        contentDiv.appendChild(footer);
+        rightColDiv.appendChild(footer);
         
         // Buttons
         let buttonsWrapper = document.createElement('div');
@@ -118,6 +158,15 @@ class SuberoModal {
         let documentBody = document.querySelector('body');
         documentBody.appendChild(modalDiv);
         
+    }
+
+    setBanner(args, pluginUrl) {
+        let banner = {};
+        banner.src = args.hasOwnProperty('src') ? args.src : pluginUrl + '/assets/img/thumb-up-circle.png';
+        banner.classes = args.hasOwnProperty('classes') ? args.classes : null;
+        banner.width = args.hasOwnProperty('width') ? args.width : null;
+        banner.height = args.hasOwnProperty('height') ? args.height : null;
+        return banner;
     }
 
     setImage(args, pluginUrl) {

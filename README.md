@@ -27,9 +27,11 @@ myModal.show();
 ## Options
 All arguments are optional, however, you would want to declare at least a `title` and a `message` to display within the modal.
 
-* **id** String sets the id attribute for the main modal Div.
-* **title** String  
-* **message** String (Accepts HTML tags)
+* **layout** String: vertical | horizontal. Default "vertical".
+* **id** String: Sets the id attribute for the main modal Div.
+* **title** String.
+* **message** String (Accepts HTML tags).
+* **closeIcon** Bool: Default true.
 * **confirmButton** Object
   * text (String)
   * callback (Function)
@@ -38,7 +40,12 @@ All arguments are optional, however, you would want to declare at least a `title
   * text (String)
   * callback (Function)
   * hideOnClick (Bool) wheather to close the modal or not when this button is clicked. Default: true.
-* **image** Object
+* **image** Object.
+  * src (String - The url of the image)
+  * width (Integer)
+  * height (Integer)
+  * classes (Array with aditional classes for the image)
+* **banner** Object (Shows on the left column when layout is set to 'vertical').
   * src (String - The url of the image)
   * width (Integer)
   * height (Integer)
